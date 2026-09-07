@@ -95,7 +95,6 @@
             display: block;
         }
 
-        /* 學習卡片樣式 */
         .single-card {
             background-color: var(--card-bg);
             border-radius: 12px;
@@ -180,7 +179,6 @@
             font-weight: bold;
         }
 
-        /* 通用測驗與練習面板 */
         .quiz-card {
             background: white;
             padding: 30px;
@@ -204,11 +202,6 @@
             border: 2px solid #e9ecef;
         }
 
-        .quiz-opt-btn:hover {
-            background-color: #e2e6ea;
-        }
-
-        /* 挖空與自定義鍵盤樣式 */
         .blank-word-container {
             display: flex;
             justify-content: center;
@@ -274,10 +267,6 @@
             min-width: 36px;
         }
 
-        .key-btn:active {
-            background-color: #cbd5e1;
-        }
-
         .key-btn.action-key {
             background-color: #e2e8f0;
             color: #0f172a;
@@ -309,7 +298,6 @@
         <button class="nav-btn" onclick="switchTab('spelling')">✍️ 拼字練習</button>
     </div>
 
-    <!-- 學習分頁 -->
     <div id="learnTab" class="tab-content active">
         <div id="singleCardContainer" class="single-card"></div>
         <div class="card-navigation">
@@ -319,7 +307,6 @@
         </div>
     </div>
 
-    <!-- 選擇題測驗分頁 -->
     <div id="quizTab" class="tab-content">
         <div class="quiz-card">
             <h2 id="quizQuestion">---</h2>
@@ -329,7 +316,6 @@
         </div>
     </div>
 
-    <!-- 句型挖空選擇題分頁 -->
     <div id="sentenceQuizTab" class="tab-content">
         <div class="quiz-card">
             <h3 style="color: #666; margin-bottom: 10px;">請根據例句選出正確填空：</h3>
@@ -341,37 +327,25 @@
         </div>
     </div>
 
-    <!-- 聽寫測驗分頁 -->
     <div id="dictationTab" class="tab-content">
         <div class="quiz-card">
             <h2>聽發音填寫單字挖空</h2>
             <button onclick="playDictationAudio()" style="font-size: 24px; padding: 15px 25px; margin: 15px 0;">🔊 點擊播放發音</button>
             <p id="dictationHint" style="color: #666; font-style: italic;"></p>
-            
-            <!-- 挖空格子容器 -->
             <div id="dictationWordContainer" class="blank-word-container"></div>
-            
-            <!-- 自定義英文鍵盤 -->
             <div class="virtual-keyboard" id="dictationKeyboard"></div>
-
             <p id="dictationFeedback" style="margin-top: 15px; font-weight: bold;"></p>
             <button onclick="initDictation()" style="margin-top: 15px; background-color: #7f8c8d;">下一題</button>
         </div>
     </div>
 
-    <!-- 拼字練習分頁 -->
     <div id="spellingTab" class="tab-content">
         <div class="quiz-card">
             <h2>看中文提示拼出挖空單字</h2>
             <div id="spellingChinese" style="font-size: 26px; color: #e67e22; font-weight: bold; margin: 15px 0;">---</div>
             <p id="spellingPos" style="color: #7f8c8d; font-style: italic; margin-bottom: 10px;"></p>
-            
-            <!-- 挖空格子容器 -->
             <div id="spellingWordContainer" class="blank-word-container"></div>
-
-            <!-- 自定義英文鍵盤 -->
             <div class="virtual-keyboard" id="spellingKeyboard"></div>
-
             <p id="spellingFeedback" style="margin-top: 15px; font-weight: bold;"></p>
             <button onclick="initSpelling()" style="margin-top: 15px; background-color: #7f8c8d;">下一題</button>
         </div>
@@ -504,19 +478,13 @@ let currentSentenceItem = null;
 let currentSentenceAnswer = '';
 let availableVoices = [];
 
-// 聽寫測驗狀態
 let dictationItem = null;
-let dictationState = []; // 紀錄每個字元狀態：{ char: 'a', isBlank: true, userVal: '' }
+let dictationState = [];
 let activeDictationIndex = 0;
 
-// 拼字練習狀態
 let spellingItem = null;
 let spellingState = [];
 let activeSpellingIndex = 0;
-
-function isMobileDevice() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
 
 function populateVoiceList() {
     if (typeof speechSynthesis === 'undefined') return;
@@ -524,27 +492,22 @@ function populateVoiceList() {
     const allVoices = synth.getVoices();
     const voiceSelect = document.getElementById('voiceSelect');
     
-    let filtered = [];
-    const mobile = isMobileDevice();
-
-    if (mobile) {
-        filtered = allVoices.filter(voice => voice.name.toLowerCase().includes('samantha'));
-        if (filtered.length === 0) {
-            filtered = allVoices.filter(voice => voice.lang.toLowerCase().includes('en') && !voice.name.toLowerCase().includes('male'));
-        }
-    } else {
-        filtered = allVoices.filter(voice => {
-            const name = voice.name.toLowerCase();
-            const lang = voice.lang.toLowerCase();
-            return lang.includes('en') && name.includes('google') && !name.includes('male') && !name.includes('david');
-        });
-        if (filtered.length === 0) {
-            filtered = allVoices.filter(voice => voice.lang.toLowerCase().includes('en') && !voice.name.toLowerCase().includes('male'));
-        }
+    // 放寬篩選條件，只要包含英文語音即可，確保 Android 手機找得到選項
+    let filtered = allVoices.filter(voice => voice.lang.toLowerCase().includes('en'));
+    if (filtered.length === 0) {
+        filtered = allVoices; // 如果完全沒有標註英文，則抓取全部可用語音
     }
 
     availableVoices = filtered;
     voiceSelect.innerHTML = '';
+    
+    if (availableVoices.length === 0) {
+        const option = document.createElement('option');
+        option.textContent = "預設系統語音";
+        voiceSelect.appendChild(option);
+        return;
+    }
+
     availableVoices.forEach((voice, index) => {
         const option = document.createElement('option');
         option.value = index;
@@ -552,19 +515,22 @@ function populateVoiceList() {
         voiceSelect.appendChild(option);
     });
 
-    if (voiceSelect.options.length > 0) {
-        voiceSelect.selectedIndex = 0;
-    }
+    voiceSelect.selectedIndex = 0;
 }
 
 populateVoiceList();
-if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
-    speechSynthesis.onvoiceschanged = populateVoiceList;
+if (typeof speechSynthesis !== 'undefined') {
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = populateVoiceList;
+    }
 }
 
 function speak(text) {
     if (typeof speechSynthesis === 'undefined') return;
+    
+    // Android 修正：發音前必須先取消目前正在排隊的語音，避免卡住
     speechSynthesis.cancel();
+
     const utterance = new SpeechSynthesisUtterance(text);
     const voiceSelect = document.getElementById('voiceSelect');
     const selectedIndex = voiceSelect.value;
@@ -572,9 +538,11 @@ function speak(text) {
     if (availableVoices.length > 0 && availableVoices[selectedIndex]) {
         utterance.voice = availableVoices[selectedIndex];
     }
-    utterance.rate = 0.7;
+    
+    utterance.rate = 0.8; // 稍微調慢語速，適合學童聽力
     utterance.pitch = 1.0;
 
+    // 透過微小延遲觸發，確保 Android 瀏覽器音訊物件喚醒
     setTimeout(() => {
         speechSynthesis.speak(utterance);
     }, 50);
@@ -771,21 +739,18 @@ function initSentenceQuiz() {
     });
 }
 
-/* ================= 挖空與自定義鍵盤核心邏輯 ================= */
-
 function setupLetterPuzzle(item, containerId, keyboardId, checkCallback) {
     const word = item.word;
     const container = document.getElementById(containerId);
     container.innerHTML = '';
     
-    stateArray = [];
+    let stateArray = [];
     for (let i = 0; i < word.length; i++) {
         const char = word[i];
         let isBlank = false;
         let userVal = char;
         
         if (/[a-zA-Z]/.test(char)) {
-            // 隨機抽出一半左右的字母作為挖空，若單字很短至少挖空 1 個
             isBlank = Math.random() < 0.5;
             if (isBlank) userVal = '';
         }
@@ -793,7 +758,6 @@ function setupLetterPuzzle(item, containerId, keyboardId, checkCallback) {
         stateArray.push({ char: char, isBlank: isBlank, userVal: userVal });
     }
 
-    // 確保至少有一個被挖空
     if (!stateArray.some(s => s.isBlank)) {
         const validIndices = [];
         stateArray.forEach((s, idx) => { if (/[a-zA-Z]/.test(s.char)) validIndices.push(idx); });
@@ -804,7 +768,6 @@ function setupLetterPuzzle(item, containerId, keyboardId, checkCallback) {
         }
     }
 
-    // 尋找第一個挖空的索引作為預設焦點
     let firstBlank = stateArray.findIndex(s => s.isBlank && s.userVal === '');
     if (firstBlank === -1) firstBlank = 0;
 
@@ -868,7 +831,6 @@ function renderVirtualKeyboard(keyboardId, onKeyPress, onDelete) {
     });
 }
 
-/* ================= 聽寫測驗控制 ================= */
 let dictationPuzzle = null;
 
 function initDictation() {
@@ -903,7 +865,6 @@ function handleDictationKeyPress(letter) {
 
     if (idx < state.length) {
         state[idx].userVal = letter;
-        // 自動跳到下一個挖空格子
         let nextIdx = idx + 1;
         while (nextIdx < state.length && (!state[nextIdx].isBlank || state[nextIdx].userVal !== '')) {
             nextIdx++;
@@ -924,7 +885,6 @@ function handleDictationDelete() {
     if (state[idx].isBlank && state[idx].userVal !== '') {
         state[idx].userVal = '';
     } else {
-        // 往回找一個挖空格子清除
         let prevIdx = idx - 1;
         while (prevIdx >= 0 && !state[prevIdx].isBlank) {
             prevIdx--;
@@ -946,7 +906,6 @@ function playDictationAudio() {
 function checkDictationAuto() {
     if (!dictationPuzzle) return;
     const state = dictationPuzzle.state;
-    // 檢查是否所有挖空都填滿了
     const allFilled = state.every(s => !s.isBlank || s.userVal !== '');
     if (!allFilled) return;
 
@@ -963,8 +922,6 @@ function checkDictationAuto() {
     }
 }
 
-
-/* ================= 拼字練習控制 ================= */
 let spellingPuzzle = null;
 
 function initSpelling() {
@@ -1057,11 +1014,12 @@ function initApp() {
     updateFilteredData();
     renderSingleCard();
     
+    // Android 手機音訊解鎖機制：首次點擊頁面時，自動解鎖語音引擎
     document.body.addEventListener('touchstart', function() {
-        if (typeof speechSynthesis !== 'undefined' && speechSynthesis.speaking === false) {
-            const silentUtter = new SpeechSynthesisUtterance('');
-            silentUtter.volume = 0;
-            speechSynthesis.speak(silentUtter);
+        if (typeof speechSynthesis !== 'undefined') {
+            const unlockUtter = new SpeechSynthesisUtterance('');
+            unlockUtter.volume = 0;
+            speechSynthesis.speak(unlockUtter);
         }
     }, { once: true });
 }
