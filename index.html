@@ -492,10 +492,16 @@ function populateVoiceList() {
     const allVoices = synth.getVoices();
     const voiceSelect = document.getElementById('voiceSelect');
     
-    // 放寬篩選條件，只要包含英文語音即可，確保 Android 手機找得到選項
-    let filtered = allVoices.filter(voice => voice.lang.toLowerCase().includes('en'));
+    // 嚴格篩選：只抓取 Google 發音 或 Apple 的 Samantha (支援 en-US 英文)
+    let filtered = allVoices.filter(voice => {
+        const name = voice.name.toLowerCase();
+        const lang = voice.lang.toLowerCase();
+        return (name.includes('google') || name.includes('samantha')) && lang.includes('en');
+    });
+
+    // 如果系統中剛好找不到 Google 或 Samantha，則退回抓取任意美式英文 (en-US)
     if (filtered.length === 0) {
-        filtered = allVoices; // 如果完全沒有標註英文，則抓取全部可用語音
+        filtered = allVoices.filter(voice => voice.lang.toLowerCase().includes('en-us') || voice.lang.toLowerCase().includes('en'));
     }
 
     availableVoices = filtered;
@@ -528,7 +534,6 @@ if (typeof speechSynthesis !== 'undefined') {
 function speak(text) {
     if (typeof speechSynthesis === 'undefined') return;
     
-    // Android 修正：發音前必須先取消目前正在排隊的語音，避免卡住
     speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
@@ -539,10 +544,9 @@ function speak(text) {
         utterance.voice = availableVoices[selectedIndex];
     }
     
-    utterance.rate = 0.8; // 稍微調慢語速，適合學童聽力
+    utterance.rate = 0.8;
     utterance.pitch = 1.0;
 
-    // 透過微小延遲觸發，確保 Android 瀏覽器音訊物件喚醒
     setTimeout(() => {
         speechSynthesis.speak(utterance);
     }, 50);
@@ -1014,7 +1018,6 @@ function initApp() {
     updateFilteredData();
     renderSingleCard();
     
-    // Android 手機音訊解鎖機制：首次點擊頁面時，自動解鎖語音引擎
     document.body.addEventListener('touchstart', function() {
         if (typeof speechSynthesis !== 'undefined') {
             const unlockUtter = new SpeechSynthesisUtterance('');
