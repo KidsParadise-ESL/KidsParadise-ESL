@@ -292,9 +292,10 @@
             <label for="reviewRangeSelect">複習範圍：</label>
             <select id="reviewRangeSelect" onchange="changeReviewRange()">
                 <option value="WEEK2">Week 2 (9/7~9/11)</option>
-                <option value="WEEK3" selected>Week 3 (9/14~9/18)</option>
+                <option value="WEEK3">Week 3 (9/14~9/18)</option>
                 <option value="WEEK4">Week 4 (9/28~10/2)</option>
                 <option value="WEEK5">Week 5 (10/5~10/9)</option>
+                <option value="WEEK6" selected>Week 6 (10/12~10/16)</option>
                 <option value="ALL">全部範圍</option>
             </select>
         </div>
@@ -477,7 +478,7 @@ const defaultData = [
   { "word": "South America", "pos": "n.", "group": "ESL 6A", "chinese": "南美洲", "defEn": "a continent that is south of North America", "example": "Brazil is a large country in South America.", "range": "WEEK2" },
   { "word": "access", "pos": "n. / v.", "group": "ESL 6A", "chinese": "存取 / 進入", "defEn": "the ability or right to enter a place or use something", "example": "Students have access to the library.", "range": "WEEK2" },
   { "word": "orchestra", "pos": "n.", "group": "ESL 6A", "chinese": "管弦樂團", "defEn": "a large group of musicians who play different instruments", "example": "The school orchestra played several beautiful songs.", "range": "WEEK2" },
-  { "word": "text message", "pos": "n. / v.", "group": "ESL 6A", "chinese": "簡訊 / 傳訊息給...", "defEn": "a short written message sent from one phone to another", "example": "I sent my mother a text message.", "range": "WEEK2" },
+  { "word": "text message", "pos": "n. / v.", "group": "ESL 6A", "chinese": "簡訊 / 傳訊息", "defEn": "a short written message sent from one phone to another", "example": "I sent my mother a text message.", "range": "WEEK2" },
   { "word": "textbook", "pos": "n.", "group": "ESL 6A", "chinese": "課本", "defEn": "a book used for studying a school subject", "example": "Our science textbook has many pictures.", "range": "WEEK2" },
 
   // ==================== WEEK 3 資料 ====================
@@ -833,7 +834,110 @@ const defaultData = [
   { "word": "advantage", "pos": "n.", "group": "ESL 6A", "chinese": "優點 / 好處", "defEn": "something that makes a situation better", "example": "One advantage of living near school is that I can walk there.", "range": "WEEK5" },
   { "word": "disadvantage", "pos": "n.", "group": "ESL 6A", "chinese": "缺點 / 不利之處", "defEn": "something that makes a situation more difficult", "example": "One disadvantage of living far from school is getting up early.", "range": "WEEK5" },
   { "word": "social interaction", "pos": "n.", "group": "ESL 6A", "chinese": "社交互動", "defEn": "talking and spending time with other people", "example": "Playing games gives children more social interaction.", "range": "WEEK5" },
-  { "word": "patrol", "pos": "v. / n.", "group": "ESL 6A", "chinese": "巡邏 / 巡查", "defEn": "to move around an area to make sure it is safe", "example": "Police officers patrol the streets at night.", "range": "WEEK5" }
+  { "word": "patrol", "pos": "v. / n.", "group": "ESL 6A", "chinese": "巡邏 / 巡查", "defEn": "to move around an area to make sure it is safe", "example": "Police officers patrol the streets at night.", "range": "WEEK5" },
+
+  // ==================== WEEK 6 資料 (10/12~10/16) ====================
+  // ESL 1A (Week 6)
+  { "word": "read", "pos": "v.", "group": "ESL 1A", "chinese": "閱讀 / 唸出", "defEn": "to look at words in a book", "example": "I read a book with my mum.", "range": "WEEK6" },
+  { "word": "draw", "pos": "v.", "group": "ESL 1A", "chinese": "畫 / 繪畫", "defEn": "to make a picture with a pen or pencil", "example": "I like to draw pictures of animals.", "range": "WEEK6" },
+  { "word": "phone", "pos": "n.", "group": "ESL 1A", "chinese": "電話 / 手機", "defEn": "a thing you can use to talk to people", "example": "Mum has a phone in her bag.", "range": "WEEK6" },
+  { "word": "listen", "pos": "v.", "group": "ESL 1A", "chinese": "聽", "defEn": "to hear what someone is saying", "example": "Please listen to the teacher.", "range": "WEEK6" },
+  { "word": "guitar", "pos": "n.", "group": "ESL 1A", "chinese": "吉他", "defEn": "a thing you can play music with", "example": "My brother can play the guitar.", "range": "WEEK6" },
+  { "word": "play", "pos": "v.", "group": "ESL 1A", "chinese": "玩", "defEn": "to have fun with a game or toy", "example": "The children play with a ball.", "range": "WEEK6" },
+  { "word": "kite", "pos": "n.", "group": "ESL 1A", "chinese": "風箏", "defEn": "a toy that goes up in the sky", "example": "The boy has a red kite.", "range": "WEEK6" },
+  { "word": "bike", "pos": "n.", "group": "ESL 1A", "chinese": "腳踏車", "defEn": "a thing with two wheels you can ride", "example": "I ride my bike in the park.", "range": "WEEK6" },
+  { "word": "face", "pos": "n.", "group": "ESL 1A", "chinese": "臉", "defEn": "the front part of the head", "example": "Wash your face every morning.", "range": "WEEK6" },
+  { "word": "hair", "pos": "n.", "group": "ESL 1A", "chinese": "頭髮", "defEn": "the things that grow on your head", "example": "She has long black hair.", "range": "WEEK6" },
+  { "word": "mouth", "pos": "n.", "group": "ESL 1A", "chinese": "嘴巴", "defEn": "the part of the face used for eating and talking", "example": "Open your mouth and say ah.", "range": "WEEK6" },
+  { "word": "eye", "pos": "n.", "group": "ESL 1A", "chinese": "眼睛", "defEn": "the part of the body you see with", "example": "I have two brown eyes.", "range": "WEEK6" },
+  { "word": "hand", "pos": "n.", "group": "ESL 1A", "chinese": "手", "defEn": "the part of the body at the end of your arm", "example": "Clap your hands together.", "range": "WEEK6" },
+  { "word": "stomach", "pos": "n.", "group": "ESL 1A", "chinese": "肚子", "defEn": "the part of the body inside where food goes", "example": "My stomach hurts after eating too much.", "range": "WEEK6" },
+
+  // ESL 2A (Week 6)
+  { "word": "the moon", "pos": "n.", "group": "ESL 2A", "chinese": "月亮", "defEn": "the round thing we see in the sky at night", "example": "The moon is big and white tonight.", "range": "WEEK6" },
+  { "word": "the sun", "pos": "n.", "group": "ESL 2A", "chinese": "太陽", "defEn": "the bright thing we see in the sky in the day", "example": "The sun is hot and bright today.", "range": "WEEK6" },
+  { "word": "the sky", "pos": "n.", "group": "ESL 2A", "chinese": "天空", "defEn": "the space above us", "example": "I can see a bird in the blue sky.", "range": "WEEK6" },
+  { "word": "the sea", "pos": "n.", "group": "ESL 2A", "chinese": "海 / 海洋", "defEn": "a very big area of water", "example": "We can swim in the sea on a hot day.", "range": "WEEK6" },
+  { "word": "cage", "pos": "n.", "group": "ESL 2A", "chinese": "籠子", "defEn": "a home for a bird or animal with bars", "example": "The little bird is in the cage.", "range": "WEEK6" },
+  { "word": "cloud", "pos": "n.", "group": "ESL 2A", "chinese": "雲", "defEn": "a white or grey thing in the sky", "example": "There is a big white cloud in the sky.", "range": "WEEK6" },
+  { "word": "tonight", "pos": "adv.", "group": "ESL 2A", "chinese": "今晚", "defEn": "this evening or night", "example": "We can see the moon tonight.", "range": "WEEK6" },
+  { "word": "friendly", "pos": "adj.", "group": "ESL 2A", "chinese": "友善的", "defEn": "kind and nice to other people", "example": "Our new teacher is very friendly.", "range": "WEEK6" },
+  { "word": "sunglasses", "pos": "n.", "group": "ESL 2A", "chinese": "太陽眼鏡", "defEn": "glasses you wear when it is sunny", "example": "I wear my sunglasses on a sunny day.", "range": "WEEK6" },
+  { "word": "cap", "pos": "n.", "group": "ESL 2A", "chinese": "鴨舌帽 / 帽子", "defEn": "a soft hat with a front part", "example": "Tom has a red cap on his head.", "range": "WEEK6" },
+  { "word": "flag", "pos": "n.", "group": "ESL 2A", "chinese": "旗子", "defEn": "a piece of cloth with colors or pictures", "example": "The flag is red, white and blue.", "range": "WEEK6" },
+  { "word": "balloon", "pos": "n.", "group": "ESL 2A", "chinese": "氣球", "defEn": "a thin bag filled with air", "example": "The girl has a pink balloon in her hand.", "range": "WEEK6" },
+  { "word": "wool hat", "pos": "n.", "group": "ESL 2A", "chinese": "毛帽", "defEn": "a warm hat made of wool", "example": "I wear my wool hat when it is cold.", "range": "WEEK6" },
+  { "word": "mountain top", "pos": "n.", "group": "ESL 2A", "chinese": "山頂", "defEn": "the highest part of a mountain", "example": "There is snow on the mountain top.", "range": "WEEK6" },
+  { "word": "food", "pos": "n.", "group": "ESL 2A", "chinese": "食物", "defEn": "things that people and animals eat", "example": "We have some food for our picnic.", "range": "WEEK6" },
+
+  // ESL 3A (Week 6)
+  { "word": "concert", "pos": "n.", "group": "ESL 3A", "chinese": "音樂會 / 演唱會", "defEn": "a show with music", "example": "We went to a concert and listened to music.", "range": "WEEK6" },
+  { "word": "keyboard", "pos": "n.", "group": "ESL 3A", "chinese": "鍵盤 (電腦的、樂器)", "defEn": "an instrument with black and white keys", "example": "Amy can play a song on the keyboard.", "range": "WEEK6" },
+  { "word": "princess", "pos": "n.", "group": "ESL 3A", "chinese": "公主", "defEn": "a daughter of a king or queen", "example": "The princess lives in a big castle.", "range": "WEEK6" },
+  { "word": "soccer game", "pos": "n.", "group": "ESL 3A", "chinese": "足球比賽", "defEn": "a game of soccer", "example": "We watched a soccer game after school.", "range": "WEEK6" },
+  { "word": "talk on the phone", "pos": "phr.", "group": "ESL 3A", "chinese": "講電話", "defEn": "to speak to someone by phone", "example": "Mum is talking on the phone with Grandma.", "range": "WEEK6" },
+  { "word": "happen", "pos": "v.", "group": "ESL 3A", "chinese": "發生", "defEn": "to take place", "example": "What happened at school today?", "range": "WEEK6" },
+  { "word": "sink sank sunk", "pos": "v.", "group": "ESL 3A", "chinese": "沉", "defEn": "to go down under water", "example": "The boat sank in the water.", "range": "WEEK6" },
+  { "word": "float", "pos": "v.", "group": "ESL 3A", "chinese": "漂浮", "defEn": "to stay on top of water", "example": "The toy boat can float on the water.", "range": "WEEK6" },
+  { "word": "fresh water", "pos": "n.", "group": "ESL 3A", "chinese": "淡水", "defEn": "water that is not salty", "example": "Fish in this lake live in fresh water.", "range": "WEEK6" },
+  { "word": "pour", "pos": "v.", "group": "ESL 3A", "chinese": "倒入 / 灌注", "defEn": "to make liquid flow into something", "example": "Please pour some milk into the glass.", "range": "WEEK6" },
+  { "word": "bottom", "pos": "n.", "group": "ESL 3A", "chinese": "底部", "defEn": "the lowest part of something", "example": "The ball is at the bottom of the box.", "range": "WEEK6" },
+  { "word": "because", "pos": "conj.", "group": "ESL 3A", "chinese": "因為", "defEn": "for the reason that", "example": "I stayed home because it was raining.", "range": "WEEK6" },
+  { "word": "hobby", "pos": "n.", "group": "ESL 3A", "chinese": "嗜好", "defEn": "something you like doing for fun", "example": "Drawing is my favorite hobby.", "range": "WEEK6" },
+  { "word": "arrive at", "pos": "phr.", "group": "ESL 3A", "chinese": "到達", "defEn": "to get to a place", "example": "We arrived at school at eight o'clock.", "range": "WEEK6" },
+  { "word": "guitar", "pos": "n.", "group": "ESL 3A", "chinese": "吉他", "defEn": "a musical instrument with strings", "example": "Ben can play the guitar very well.", "range": "WEEK6" },
+  { "word": "salt", "pos": "n.", "group": "ESL 3A", "chinese": "鹽巴", "defEn": "a white thing we put in food for taste", "example": "Please put a little salt in the soup.", "range": "WEEK6" },
+  { "word": "castle", "pos": "n.", "group": "ESL 3A", "chinese": "城堡", "defEn": "a large old building for a king or queen", "example": "The king and queen live in a castle.", "range": "WEEK6" },
+  { "word": "mix", "pos": "v.", "group": "ESL 3A", "chinese": "混合", "defEn": "to put things together", "example": "Mix the eggs and milk in a bowl.", "range": "WEEK6" },
+
+  // ESL 4A (Week 6)
+  { "word": "surgery", "pos": "n.", "group": "ESL 4A", "chinese": "手術", "defEn": "an operation done by a doctor", "example": "Ben had surgery on his leg, so he is resting at home.", "range": "WEEK6" },
+  { "word": "sled", "pos": "n.", "group": "ESL 4A", "chinese": "雪橇", "defEn": "something you ride on over snow", "example": "The children sat on the sled and went down the hill.", "range": "WEEK6" },
+  { "word": "go sledding", "pos": "phr.", "group": "ESL 4A", "chinese": "滑雪橇", "defEn": "to ride on a sled over snow", "example": "We go sledding when there is a lot of snow.", "range": "WEEK6" },
+  { "word": "post office", "pos": "n.", "group": "ESL 4A", "chinese": "郵局", "defEn": "a place where you send letters and packages", "example": "Mum went to the post office to send a letter.", "range": "WEEK6" },
+  { "word": "ingredient", "pos": "n.", "group": "ESL 4A", "chinese": "成分 / 材料", "defEn": "one of the foods used to make something", "example": "Eggs are one of the ingredients in this cake.", "range": "WEEK6" },
+  { "word": "mix", "pos": "v.", "group": "ESL 4A", "chinese": "混合", "defEn": "to put things together", "example": "Mix the milk and fruit in the bowl.", "range": "WEEK6" },
+  { "word": "pour", "pos": "v.", "group": "ESL 4A", "chinese": "傾倒", "defEn": "to make liquid flow into something", "example": "Please pour some water into my cup.", "range": "WEEK6" },
+  { "word": "neighbor", "pos": "n.", "group": "ESL 4A", "chinese": "鄰居", "defEn": "a person who lives near you", "example": "Our neighbor has a small dog and a big garden.", "range": "WEEK6" },
+  { "word": "neighborhood", "pos": "n.", "group": "ESL 4A", "chinese": "鄰近地區", "defEn": "the area near your home", "example": "There is a small park in my neighborhood.", "range": "WEEK6" },
+  { "word": "city hall", "pos": "n.", "group": "ESL 4A", "chinese": "市政府", "defEn": "a building where the city government works", "example": "The city hall is next to the park.", "range": "WEEK6" },
+  { "word": "vanilla", "pos": "n.", "group": "ESL 4A", "chinese": "香草", "defEn": "a sweet flavor used in food and drinks", "example": "My sister likes vanilla ice cream very much.", "range": "WEEK6" },
+  { "word": "instruction", "pos": "n.", "group": "ESL 4A", "chinese": "指示 / 說明書", "defEn": "information that tells you what to do", "example": "Read the instructions before you make the cake.", "range": "WEEK6" },
+
+  // ESL 5A (Week 6)
+  { "word": "thief - thieves", "pos": "n.", "group": "ESL 5A", "chinese": "小偷", "defEn": "a person who steals things", "example": "The thief took a bag from the shop, but a police officer saw him outside.", "range": "WEEK6" },
+  { "word": "fence", "pos": "n.", "group": "ESL 5A", "chinese": "柵欄 / 圍欄", "defEn": "something around a place to keep people or animals in or out", "example": "There is a high fence around the garden.", "range": "WEEK6" },
+  { "word": "librarian", "pos": "n.", "group": "ESL 5A", "chinese": "圖書館管理員", "defEn": "a person who works in a library", "example": "The librarian helped me find a book about animals.", "range": "WEEK6" },
+  { "word": "receipt", "pos": "n.", "group": "ESL 5A", "chinese": "收據 / 發票", "defEn": "a piece of paper that shows you paid for something", "example": "Dad kept the receipt after buying the new shoes.", "range": "WEEK6" },
+  { "word": "event", "pos": "n.", "group": "ESL 5A", "chinese": "事件 / 賽事 / 大事", "defEn": "something important that happens", "example": "Moving to a new city was a big event for the family.", "range": "WEEK6" },
+  { "word": "athlete", "pos": "n.", "group": "ESL 5A", "chinese": "運動員", "defEn": "a person who is good at sports", "example": "The young athlete practices every day.", "range": "WEEK6" },
+  { "word": "spirit", "pos": "n.", "group": "ESL 5A", "chinese": "精神", "defEn": "the way a person thinks and feels", "example": "Ben kept a happy spirit and smiled at his friends.", "range": "WEEK6" },
+  { "word": "mascot", "pos": "n.", "group": "ESL 5A", "chinese": "吉祥物", "defEn": "a person, animal, or thing that brings good luck to a group", "example": "The school mascot is a friendly lion.", "range": "WEEK6" },
+  { "word": "represent", "pos": "v.", "group": "ESL 5A", "chinese": "代表", "defEn": "to be a sign of something", "example": "The five stars represent the five children.", "range": "WEEK6" },
+  { "word": "host", "pos": "n. / v.", "group": "ESL 5A", "chinese": "主持人 / 主辦方", "defEn": "a person who introduces people or organizes an event", "example": "The host welcomed everyone to the show.", "range": "WEEK6" },
+  { "word": "symbol", "pos": "n.", "group": "ESL 5A", "chinese": "象徵 / 符號", "defEn": "a picture, shape, or object that has a special meaning", "example": "The heart is often used as a symbol of love.", "range": "WEEK6" },
+  { "word": "symbolize", "pos": "v.", "group": "ESL 5A", "chinese": "象徵", "defEn": "to be a symbol of something", "example": "The white bird can symbolize peace.", "range": "WEEK6" },
+  { "word": "ceremony", "pos": "n.", "group": "ESL 5A", "chinese": "典禮", "defEn": "a formal event for a special reason", "example": "The students wore their best clothes for the school ceremony.", "range": "WEEK6" },
+
+  // ESL 6A (Week 6)
+  { "word": "regular", "pos": "adj.", "group": "ESL 6A", "chinese": "規律的 / 定期的", "defEn": "happening often or at the same time", "example": "We have regular English lessons every Monday and Wednesday.", "range": "WEEK6" },
+  { "word": "advantage", "pos": "n.", "group": "ESL 6A", "chinese": "優點 / 好處", "defEn": "something that makes a situation better", "example": "One advantage of living near school is that I can walk there.", "range": "WEEK6" },
+  { "word": "disadvantage", "pos": "n.", "group": "ESL 6A", "chinese": "缺點 / 不利之處", "defEn": "something that makes a situation more difficult", "example": "One disadvantage of living far from school is getting up early.", "range": "WEEK6" },
+  { "word": "social interaction", "pos": "n.", "group": "ESL 6A", "chinese": "社交互動", "defEn": "talking and spending time with other people", "example": "Playing games gives children more social interaction.", "range": "WEEK6" },
+  { "word": "delay", "pos": "v. / n.", "group": "ESL 6A", "chinese": "延誤 / 延遲", "defEn": "a wait that makes something happen later", "example": "Heavy rain delayed the football game for an hour.", "range": "WEEK6" },
+  { "word": "Ireland", "pos": "n.", "group": "ESL 6A", "chinese": "愛爾蘭", "defEn": "a country in Europe", "example": "My uncle visited Ireland last summer.", "range": "WEEK6" },
+  { "word": "do an experiment", "pos": "v. phr.", "group": "ESL 6A", "chinese": "做一個實驗", "defEn": "to do a test to learn something", "example": "We did an experiment in science class.", "range": "WEEK6" },
+  { "word": "shine shone shone", "pos": "v.", "group": "ESL 6A", "chinese": "發光 / 照耀", "defEn": "to give or send out light", "example": "The sun shone all afternoon.", "range": "WEEK6" },
+  { "word": "lid", "pos": "n.", "group": "ESL 6A", "chinese": "蓋子", "defEn": "the top that covers a box or container", "example": "Please put the lid back on the box.", "range": "WEEK6" },
+  { "word": "deliver", "pos": "v.", "group": "ESL 6A", "chinese": "遞送", "defEn": "to take something to a person or place", "example": "The driver will deliver the package to our house.", "range": "WEEK6" },
+  { "word": "area", "pos": "n.", "group": "ESL 6A", "chinese": "區域 / 地區", "defEn": "a part of a place, town, country, or building", "example": "There is a large play area behind the school.", "range": "WEEK6" },
+  { "word": "common", "pos": "adj.", "group": "ESL 6A", "chinese": "普遍的", "defEn": "happening often or found in many places", "example": "It is common to see people using their phones.", "range": "WEEK6" },
+  { "word": "chance", "pos": "n.", "group": "ESL 6A", "chinese": "機會", "defEn": "an opportunity to do something", "example": "I had a chance to speak English with visitors.", "range": "WEEK6" },
+  { "word": "tie", "pos": "v. / n.", "group": "ESL 6A", "chinese": "綁、繫 / 平手 / 領帶", "defEn": "to fasten with a knot, an equal result, or cloth around neck", "example": "Please tie your shoes before you go outside.", "range": "WEEK6" },
+  { "word": "host", "pos": "n. / v.", "group": "ESL 6A", "chinese": "主人 / 主持人 / 主辦方", "defEn": "a person who welcomes guests or organizes an event", "example": "Our host showed us around the house.", "range": "WEEK6" },
+  { "word": "prove", "pos": "v.", "group": "ESL 6A", "chinese": "證明", "defEn": "to show that something is true", "example": "The test results proved that our answer was correct.", "range": "WEEK6" },
+  { "word": "participate", "pos": "v.", "group": "ESL 6A", "chinese": "參加 / 參與", "defEn": "to take part in an activity or event", "example": "Many students will participate in the sports day.", "range": "WEEK6" },
+  { "word": "incredible", "pos": "adj.", "group": "ESL 6A", "chinese": "令人難以置信的 / 很棒的", "defEn": "very surprising or very good", "example": "We had an incredible view of the mountains.", "range": "WEEK6" }
 ];
 
 let wordDatabase = [];
@@ -843,7 +947,7 @@ let currentQuizAnswer = '';
 let currentSentenceItem = null;
 let currentSentenceAnswer = '';
 let availableVoices = [];
-let currentRange = 'WEEK3'; // 預設範圍為 WEEK3
+let currentRange = 'WEEK6'; // 預設範圍為 WEEK6
 
 let dictationItem = null;
 let dictationState = [];
@@ -1019,21 +1123,21 @@ function renderSingleCard() {
                 <div class="word-title">${item.word}</div>
                 <div class="pos">${item.pos || ''} &bull; <span style="color:var(--primary-color);">${item.group}</span></div>
             </div>
-            <button class="audio-btn" onclick="speak('${item.word.replace(/'/g, "\\'")}')" title="讀出單字">🔊 發音</button>
+            <button class="audio-btn" onclick="speak('${item.word.replace(/'/g, "\'")}')" title="讀出單字">🔊 發音</button>
         </div>
         <div class="chinese-block">${item.chinese}</div>
         <div>
             <div class="section-label">英文解釋 (Definition)</div>
             <div class="section-box">
                 <div class="section-content">${item.defEn || ''}</div>
-                <button class="audio-btn" onclick="speak('${(item.defEn || '').replace(/'/g, "\\'")}')" title="讀出解釋">🔊</button>
+                <button class="audio-btn" onclick="speak('${(item.defEn || '').replace(/'/g, "\'")}')" title="讀出解釋">🔊</button>
             </div>
         </div>
         <div>
             <div class="section-label">例句 (Example)</div>
             <div class="section-box" style="border-left: 4px solid var(--primary-color);">
                 <div class="section-content" style="font-style: italic;">${item.example || ''}</div>
-                <button class="audio-btn" onclick="speak('${(item.example || '').replace(/'/g, "\\'")}')" title="讀出例句">🔊</button>
+                <button class="audio-btn" onclick="speak('${(item.example || '').replace(/'/g, "\'")}')" title="讀出例句">🔊</button>
             </div>
         </div>
     `;
